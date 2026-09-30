@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-30",
+  "issue": "CI checksum mismatch for tables/singular_spectra.csv",
+  "cause": "csv.writer default CRLF versus .gitattributes LF normalization",
+  "original_sha256": "5250495b87eac4bd3a98e1ff8b443ea7a99b6dc2f4f03b30f154e10485a7de73",
+  "canonical_lf_sha256": "e42a44d211ecefdfd1adc1946069f633dbdaa991cde4dcc304e6034400f3683e",
+  "public_csv_https_status": 200,
+  "public_csv_already_matches_canonical_lf": true,
+  "converted_record_endings": 30711,
+  "unchanged_data_rows": 30710,
+  "public_manifest_entries_changed": [
+    "tables/singular_spectra.csv"
+  ],
+  "artifact_regression_tests": {
+    "passed": 6,
+    "failed": 0,
+    "command": "python -m unittest discover -s tools -p \"test_*.py\""
+  },
+  "checkout_normalization_simulation": "passed without Git commands",
+  "protected_original_run_notebook_files": 3866,
+  "changed_protected_files": 0,
+  "static_checks": {
+    "status": "passed",
+    "python_files": 24,
+    "notebook_code_cells": 36,
+    "retained_output_cells": 21,
+    "hashed_dependencies": 126,
+    "local_links": 89,
+    "verified_result_files": 64
+  },
+  "lint": "passed",
+  "format": "25 files already formatted",
+  "git_commands_used": false,
+  "experiment_rerun": false,
+  "remote_fix_published": false,
+  "hosted_rerun": "pending owner publishing the local fix"
+}

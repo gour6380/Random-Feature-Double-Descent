@@ -24,6 +24,8 @@ jobs:
           python-version-file: .python-version
       - name: Check syntax, retained notebook outputs, portability and documentation
         run: python tools/check_repository.py
+      - name: Test artifact checksum and line-ending checks
+        run: python -m unittest discover -s tools -p "test_*.py"
       - name: Install the locked linter only
         run: python -m pip install ruff==0.16.8
       - name: Lint Python and notebook source

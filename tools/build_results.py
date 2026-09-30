@@ -45,7 +45,11 @@ def read_json(path: Path):
 
 def write_json(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n")
+    path.write_text(
+        json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def sha256(path: Path) -> str:
@@ -202,8 +206,12 @@ def export_saved_run(root: Path, destination: Path) -> None:
     ):
         raise ValueError("Saved runtime correctness receipt differs from the completed run")
     write_json(destination / "provenance" / "runtime_checks.json", receipt)
-    output = re.sub(r"\x1b\[[0-9;]*m", "", (run / "logs" / "runtime_checks.txt").read_text())
-    (destination / "provenance" / "runtime_checks.txt").write_text(output)
+    output = re.sub(
+        r"\x1b\[[0-9;]*m", "", (run / "logs" / "runtime_checks.txt").read_text(encoding="utf-8")
+    )
+    (destination / "provenance" / "runtime_checks.txt").write_text(
+        output, encoding="utf-8", newline="\n"
+    )
     write_json(destination / "provenance" / "budget.json", read_json(run / "logs" / "budget.json"))
     preflight = read_json(run / "preflight.json")
     write_json(
@@ -227,8 +235,10 @@ def export_saved_run(root: Path, destination: Path) -> None:
     )
     n = config["data"]["train_size"]
     nearby = sorted(sorted(config["features"]["counts"], key=lambda p: abs(p - n))[:3])
-    with (destination / "tables" / "singular_spectra.csv").open("w", newline="") as stream:
-        writer = csv.writer(stream)
+    with (destination / "tables" / "singular_spectra.csv").open(
+        "w", encoding="utf-8", newline=""
+    ) as stream:
+        writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(["seed", "n_features", "singular_index", "singular_value"])
         for count in nearby:
             for seed in config["features"]["seeds"]:
@@ -278,8 +288,12 @@ def finish(figure, destination: Path, name: str, title: str, subtitle: str, foot
     figure.text(0.065, 0.016, footer, fontsize=8.5, color=GRAY)
     figure.tight_layout(rect=(0.025, 0.052, 0.995, 0.88), h_pad=2.6, w_pad=3.0)
     for extension in ("png", "svg"):
-        kwargs = {"metadata": {"Date": None}} if extension == "svg" else {}
-        figure.savefig(destination / "figures" / f"{name}.{extension}", dpi=180, **kwargs)
+        target = destination / "figures" / f"{name}.{extension}"
+        if extension == "svg":
+            with target.open("w", encoding="utf-8", newline="\n") as stream:
+                figure.savefig(stream, format="svg", dpi=180, metadata={"Date": None})
+        else:
+            figure.savefig(target, dpi=180)
     plt.close(figure)
 
 
@@ -496,7 +510,12 @@ def redraw_figures(destination: Path) -> None:
     compare["mse_difference"] = compare.test_signal_mse_diagnostic - compare.test_signal_mse_primary
     compare["rank_difference"] = compare.numerical_rank_diagnostic - compare.numerical_rank_primary
     compare["ratio"] = compare.n_features / n
-    compare.to_csv(destination / "tables" / "cutoff_comparison.csv", index=False)
+    compare.to_csv(
+        destination / "tables" / "cutoff_comparison.csv",
+        index=False,
+        encoding="utf-8",
+        lineterminator="\n",
+    )
     fig, axes = plt.subplots(1, 2, figsize=(13.4, 5.5))
     for ax, noise in zip(axes, config["data"]["noise_stds"], strict=True):
         for solver, color, style in [("cutoff_1e-10", TEAL, "-"), ("cutoff_1e-14", ORANGE, "--")]:
@@ -576,7 +595,12 @@ def summarize_public_tables(destination: Path) -> None:
     noisy_values = peak.test_signal_mse.sort_values()
     peak[
         ["seed", "test_signal_mse", "condition_number", "coefficient_norm", "relative_residual"]
-    ].to_csv(destination / "tables" / "noisy_boundary_seeds.csv", index=False)
+    ].to_csv(
+        destination / "tables" / "noisy_boundary_seeds.csv",
+        index=False,
+        encoding="utf-8",
+        lineterminator="\n",
+    )
     interpolation = []
     for (seed, noise), group in minimum.groupby(["seed", "noise_std"]):
         fitted = group[group.interpolates].sort_values("n_features")
@@ -591,11 +615,21 @@ def summarize_public_tables(destination: Path) -> None:
                 ),
             }
         )
-    pd.DataFrame(interpolation).to_csv(destination / "tables" / "interpolation.csv", index=False)
+    pd.DataFrame(interpolation).to_csv(
+        destination / "tables" / "interpolation.csv",
+        index=False,
+        encoding="utf-8",
+        lineterminator="\n",
+    )
     grouped = frame.groupby(["n_features", "noise_std", "solver"]).test_signal_mse
     summary = grouped.agg(["count", "mean", "std", "median", "min", "max"]).reset_index()
     landmarks = summary[summary.n_features.isin([64, 1024, 8192])]
-    landmarks.to_csv(destination / "tables" / "landmarks.csv", index=False)
+    landmarks.to_csv(
+        destination / "tables" / "landmarks.csv",
+        index=False,
+        encoding="utf-8",
+        lineterminator="\n",
+    )
     compare = pd.read_csv(destination / "tables" / "cutoff_comparison.csv")
     claims = {
         "noisy_boundary_mean": float(noisy_values.mean()),

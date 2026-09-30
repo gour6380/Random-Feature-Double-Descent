@@ -23,3 +23,11 @@ The original notebook remains byte-for-byte unchanged, including its older diagn
 There is no duplicate upload checkout or ZIP. Local environments, full runs, caches and private drafts are excluded by `.gitignore`. No Git command or remote publication was performed. GitHub Actions are configured but have not been observed on hosted runners.
 
 [Verification receipt](release_checks.json) · [Technical report](../results/run_001/technical_report.md) · [Run guide](reproduce.md)
+
+## CI checksum correction — 30 September 2026
+
+The initial hosted static check rejected `tables/singular_spectra.csv`: the CSV writer used CRLF record endings, while `.gitattributes` normalizes CSVs to LF. The manifest therefore described the pre-normalization bytes. The public CSV matches the local file exactly after converting those line endings; all 30,710 data rows and values are unchanged.
+
+The derived CSV now uses LF and its manifest entry matches those bytes. CSV, JSON, text and SVG exports explicitly use UTF-8/LF. Historical copied evidence remains untouched. The checker retains strict raw-byte SHA-256 validation and now rejects CRLF in hashed text before publication; it does not mask differences by normalizing before hashing.
+
+Six standard-library regression checks cover correct UTF-8/LF data, CRLF rejection, stale hashes, changed values, binary bytes and escaping paths. They run in CI without scientific dependencies. Local static/lint/format checks and an LF-normalized checkout simulation pass. No notebook, model, figure or experiment was rerun; the original run and notebook remain unchanged. The fix must be published before hosted CI can validate it. [Fix receipt](ci_line_endings_checks.json).

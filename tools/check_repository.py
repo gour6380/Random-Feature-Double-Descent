@@ -9,6 +9,32 @@ import re
 from pathlib import Path
 from urllib.parse import unquote
 
+TEXT_SUFFIXES = {".py", ".md", ".ipynb", ".csv", ".json", ".txt", ".in", ".svg", ".yml"}
+
+
+def validate_result_manifest(manifest_path: Path) -> tuple[list[str], int]:
+    """Check raw bytes, including LF stability under the repository's attributes."""
+    base = manifest_path.parent.resolve()
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    errors = []
+    for relative, expected in manifest["files"].items():
+        path = (base / relative).resolve()
+        if not path.is_relative_to(base):
+            errors.append(f"Result path escapes its package: {relative}")
+            continue
+        if not path.is_file():
+            errors.append(f"Result checksum mismatch (missing file): {relative}")
+            continue
+        content = path.read_bytes()
+        if hashlib.sha256(content).hexdigest() != expected:
+            errors.append(f"Result checksum mismatch: {relative}")
+        if path.suffix in TEXT_SUFFIXES and b"\r\n" in content:
+            errors.append(
+                f"Result text uses CRLF: {relative}; export with LF and update its manifest "
+                "before publishing because .gitattributes normalizes text to LF."
+            )
+    return errors, len(manifest["files"])
+
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
@@ -20,7 +46,7 @@ def main() -> None:
     ]
     for path in files:
         try:
-            ast.parse(path.read_text(), filename=str(path))
+            ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         except SyntaxError as exc:
             errors.append(str(exc))
     notebooks = sorted(root.joinpath("notebooks").glob("*.ipynb"))
@@ -29,7 +55,7 @@ def main() -> None:
     notebook_cells = {}
     saved_output_cells = 0
     for path in notebooks:
-        notebook = json.loads(path.read_text())
+        notebook = json.loads(path.read_text(encoding="utf-8"))
         code_cells = [cell for cell in notebook["cells"] if cell["cell_type"] == "code"]
         notebook_cells[path.name] = len(code_cells)
         for index, cell in enumerate(code_cells):
@@ -47,7 +73,7 @@ def main() -> None:
         language = notebook.get("metadata", {}).get("kernelspec", {}).get("language", "python")
         if language != "python":
             errors.append(f"Expected a Python notebook in {path.name}")
-    requirements = (root / "requirements.txt").read_text()
+    requirements = (root / "requirements.txt").read_text(encoding="utf-8")
     blocks = re.split(r"\n(?=[A-Za-z0-9])", requirements)
     pins = []
     for block in blocks:
@@ -64,7 +90,7 @@ def main() -> None:
         *root.joinpath("results").rglob("*.md"),
     ]
     for path in documents:
-        for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", path.read_text()):
+        for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
             if "://" in target or target.startswith("#"):
                 continue
             resolved = path.parent / unquote(target.split("#", 1)[0])
@@ -75,15 +101,9 @@ def main() -> None:
         raise SystemExit("\n".join(errors))
     result_files = 0
     for manifest_path in sorted(root.joinpath("results").glob("*/manifest.json")):
-        base = manifest_path.parent.resolve()
-        manifest = json.loads(manifest_path.read_text())
-        for relative, expected in manifest["files"].items():
-            path = (base / relative).resolve()
-            if not path.is_relative_to(base):
-                errors.append(f"Result path escapes its package: {relative}")
-            elif not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
-                errors.append(f"Result checksum mismatch: {relative}")
-            result_files += 1
+        manifest_errors, checked = validate_result_manifest(manifest_path)
+        errors.extend(manifest_errors)
+        result_files += checked
     if errors:
         raise SystemExit("\n".join(errors))
     print(

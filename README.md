@@ -117,6 +117,6 @@ python -m ruff check src tests tools notebooks
 python -m ruff format --check src tests tools notebooks
 ```
 
-Static GitHub Actions are configured for macOS, Linux and Windows. They accept saved notebook outputs and arbitrary Python kernel names; they check syntax, links and formatting without rerunning the experiment. Hosted CI has not been observed during local preparation.
+Static GitHub Actions are configured for macOS, Linux and Windows. They accept saved notebook outputs and arbitrary Python kernel names; they check syntax, links, formatting and artifact-checker regressions without rerunning the experiment. The initial hosted run exposed a CSV line-ending checksum mismatch. The [30 September fix](docs/ci_line_endings_checks.json) passes local checks and a checkout-normalization simulation; a hosted rerun after publishing the fix remains pending.
 
 See the [release notes](docs/release-notes.md) for portability changes and [verification receipt](docs/release_checks.json) for local checks. The MIT license permits reuse; cite the protocol, exact configuration and the research foundations when reporting results.
