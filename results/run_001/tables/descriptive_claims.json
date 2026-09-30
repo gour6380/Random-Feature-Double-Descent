@@ -1,0 +1,13 @@
+{
+  "all_measured_ranks_equal_minimum_of_rows_and_columns": true,
+  "cutoff_maximum_absolute_rank_difference": 0,
+  "cutoff_maximum_absolute_test_mse_difference": 0.0,
+  "interpretation": "Descriptive saved-run summaries; post-run landmarks and medians do not select or refit predictors.",
+  "maximum_condition_number": 234754592.1336214,
+  "maximum_interpolating_relative_residual": 1.9190076079690327e-10,
+  "minimum_relative_singular_value": 4.259767576477499e-09,
+  "noisy_boundary_mean": 172947.50959446223,
+  "noisy_boundary_median": 16256.733269628214,
+  "noisy_boundary_sample_sd": 350267.7741212489,
+  "noisy_boundary_top_two_share": 0.8766192290093751
+}

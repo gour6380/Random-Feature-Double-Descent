@@ -1,0 +1,19 @@
+{
+  "registered_predictors": 840,
+  "complete_predictors": 840,
+  "failed_predictors": 0,
+  "feature_seeds": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035
+  ],
+  "dispersion": "sample standard deviation across feature seeds, conditional on fixed data",
+  "infinity_encoding": "inf in CSV; condition_number_is_infinite in source JSON"
+}

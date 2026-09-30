@@ -1,0 +1,59 @@
+{
+  "config_hash": "9ee59ec9d385edc57c2b215599f0adcce0ff3871e593847360c37e1631e645db",
+  "created_at": "2026-09-28T05:10:30.597961+00:00",
+  "data_manifests": {
+    "development": {
+      "files": {
+        "data/development.json": "b30bfe278306f7153791d8037ba00c7a420bd0c01885f2b912591878d35f92b1",
+        "data/feature_banks/seed_2026.pt": "577d85e89debc4bf29b20f1b9216724cdee7f61a3e3da2fe465c73d20e61062a",
+        "data/feature_banks/seed_2027.pt": "5e18c44feb35704e00a4e26936d259a68bb22369e3b341abddc0e18cf21f2905",
+        "data/feature_banks/seed_2028.pt": "0d36c22bfb547437cfc80fa1b1827e6e4d1159292690bf94e0dcab6064e83923",
+        "data/feature_banks/seed_2029.pt": "61222417fcc0ad4b1f6c53e68f2602a0ce2d70c46476fd2de6c67173cf9acd11",
+        "data/feature_banks/seed_2030.pt": "497d091efcb9bc2c34e7b08c88e3280c4b501c4f06131091649d8e78ee4ac9c2",
+        "data/feature_banks/seed_2031.pt": "d687eee9915211f61bbb5aaadd684093b6ddb5f514a809d9b88dfcb7014dfba7",
+        "data/feature_banks/seed_2032.pt": "cd024501ee954da65a23f9dc3c4487e5279e27640cc2311e2f0545a4382224a9",
+        "data/feature_banks/seed_2033.pt": "1ff11ca5c8054241fa86dbe639f26a9a5e825bc398fe1e91f828896cf767a90f",
+        "data/feature_banks/seed_2034.pt": "e0634080c9d7fc6b882b336a2e853b5e36c10b8038a5eb52a2c09474c6881253",
+        "data/feature_banks/seed_2035.pt": "f24b3fbf1785775b99ba4e87900795e2dc349cc0510a058a35c3d8a085f7694e",
+        "data/train.pt": "8b41604da12742cfa9e69ab1e630b502bf39a31a697defeea63d3b3263af896a",
+        "data/validation.pt": "3f85dbd1d2872961842eff8bdbf6848b76be8470b8ab2b193b1b4e950c567876"
+      }
+    },
+    "test": {
+      "files": {
+        "data/test.pt": "d6d87212dec16e463426ed400f3599a1ece6b390f70292f3d96bc9e7463b6e60"
+      }
+    }
+  },
+  "environment_hash": "c3cd954ea324d31a5567b9cb27554fe014e2e79a1cffbd6d564743a30c001bec",
+  "environment_redaction": "The executable path is relative in the public copy; environment_hash identifies the original unredacted record.",
+  "excluded_artifacts": "Generated arrays, feature banks, models, per-example predictions and TensorBoard events remain local. Their identities are retained.",
+  "frozen_policy": "all_registered_models_no_selection",
+  "frozen_sha256": "b67ed19803cb398d4c9a9c41e1a3bae0460b6aca0556069857bcf11d5230b42c",
+  "original_generated_report_sha256": "7664dc49e277cb884e09a01121410189b9d9d9916eadef77eef4faabe37708bf",
+  "source": {
+    "requirements.txt": "2ada004e482406987cd8b3e1fb666c19340f0fba334bfe8340bdcbeb506ba8c8",
+    "src/__init__.py": "637da5df2532449bba99d2d7d87a7fdd1d6361dca7659610176c6afc56173229",
+    "src/analysis.py": "e1ea621787dd3f1426c16cacd1019db5aceb94d632f3b8003982635c53d0b66f",
+    "src/checkpoints.py": "fe92a0ae3a4e82d2b76d48bc7d3bcc38378365046208b103e51077fd32d74982",
+    "src/config.py": "d823113144af3b8dc1a302cac16c61bcfaa19f299ecc9d81122742b618ec0841",
+    "src/data.py": "c4db534d7e4249794d39a4a227852a25f61af4635cb5c89c7b9ffe84f12a0adb",
+    "src/evaluate.py": "fb786fd3646fd1f35d4fddf90d22d2017f5b841421a236efac2dfd337be58f5b",
+    "src/features.py": "6da7e0ccf3735e93f47ab0500cda1b262fa47b28224c15e41aaca55b7dfd799c",
+    "src/fit.py": "a5fb31652b7a7ca6d7a39caef7edf080c9b58b9b75462615dd4a2dc7d16253ea",
+    "src/io.py": "463411239f0ff99054dfc7189b94efc40e7d0c0652c75966a766ff2b29fc0948",
+    "src/reporting.py": "0fe9cf46431840642b752391b1d4e8cbb439518953a6a661236405354e557e2d",
+    "src/runs.py": "5f4986d8a1a5c7824265af4cad9915ab14e7c6bd0599b3f32daeb99a7629638a",
+    "src/runtime.py": "ce2e50c8c39b638abd7ada050ec25bc097c3f2a96b0c97da1d141402134aef8b",
+    "src/solvers.py": "b6ac681bc226f62f7bca7c8ca786436c0be32d8ae91061c52328d3a5d8452e4c",
+    "src/tracking.py": "84bdf657b88f788ec272c936e32fd2c49eb4835d819f6fc06f7496940adbbe5f",
+    "tests/test_analysis.py": "5701bf0ee853743e7da665f6de337e6767355d0452f83acef5a239759776b234",
+    "tests/test_data_features.py": "79c9a0dd7338ea47414ce162c37821c68aa6d67e51b54e6724a56c32af96e082",
+    "tests/test_data_persistence.py": "48b11d10582b9e3e10251ca41dc8e9559c4ec95bb0be27eda7fc207bee0a7e2b",
+    "tests/test_fit_evaluation.py": "2dae7b93c25051cc315adcabfe5f8ea9f0a58e77d590692b3506b93d7ec873c0",
+    "tests/test_runs_io.py": "46a9e8aa5319f842c8179646f6c6d735ebc66d559d89062125526fea2144b3a2",
+    "tests/test_solvers_checkpoints.py": "2eb5579f62254200c955f6035de2a890364923d52ce8f1c8619d0129d345fbe8"
+  },
+  "source_hash": "dcb338784393e9b43e8fc6c041b49f43858bcf3d3c917869ccbc02845ba1f102",
+  "source_scope": "historical_source matches the measured run; current source may include later portability changes"
+}

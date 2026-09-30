@@ -1,0 +1,54 @@
+{
+  "allowed": true,
+  "evaluation_seconds_before_safety_factor": 168.72299955000472,
+  "fit_seconds_before_safety_factor": 166.96642996700461,
+  "projected_remaining_seconds": 791.3788590340187,
+  "projected_total_seconds": 801.5559901180188,
+  "reason": "Timing is approximate; upper-width buckets, a 2x multiplier and a 120s preparation/report reserve are used.",
+  "reserve_seconds": 120.0,
+  "safety_multiplier": 2.0,
+  "samples": [
+    {
+      "config_hash": "9ee59ec9d385edc57c2b215599f0adcce0ff3871e593847360c37e1631e645db",
+      "cpu_rss_bytes": 306298880,
+      "development_identity": "e2f31971c458a60fd6c29e8eca1393f792a53a1f190d080569f71d4b4eb23559",
+      "failure_reason": null,
+      "feature_seconds": 0.007933249999950931,
+      "n_features": 256,
+      "prediction_seconds": 0.0025638749998506682,
+      "seed": 2026,
+      "status": "complete",
+      "svd_count": 1,
+      "svd_seconds": 0.02642037500004335,
+      "total_seconds": 0.043742625000049884
+    },
+    {
+      "config_hash": "9ee59ec9d385edc57c2b215599f0adcce0ff3871e593847360c37e1631e645db",
+      "cpu_rss_bytes": 382238720,
+      "development_identity": "e2f31971c458a60fd6c29e8eca1393f792a53a1f190d080569f71d4b4eb23559",
+      "failure_reason": null,
+      "feature_seconds": 0.008196499999939988,
+      "n_features": 1024,
+      "prediction_seconds": 0.00892795799995838,
+      "seed": 2026,
+      "status": "complete",
+      "svd_count": 1,
+      "svd_seconds": 0.16675000000009277,
+      "total_seconds": 0.19359875000009197
+    },
+    {
+      "config_hash": "9ee59ec9d385edc57c2b215599f0adcce0ff3871e593847360c37e1631e645db",
+      "cpu_rss_bytes": 675348480,
+      "development_identity": "e2f31971c458a60fd6c29e8eca1393f792a53a1f190d080569f71d4b4eb23559",
+      "failure_reason": null,
+      "feature_seconds": 0.028075625000155924,
+      "n_features": 8192,
+      "prediction_seconds": 0.07973425000000134,
+      "seed": 2026,
+      "status": "complete",
+      "svd_count": 1,
+      "svd_seconds": 1.3599650410001232,
+      "total_seconds": 1.5192282079999586
+    }
+  ]
+}

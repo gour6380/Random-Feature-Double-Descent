@@ -1,0 +1,44 @@
+# Local Python environments (the environment name is not prescribed)
+.venv/
+.venv*/
+venv/
+env/
+.envs/
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+.tox/
+.nox/
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+/runs/*
+!/runs/.gitkeep
+# Private reviews, publication drafts and scratch artifacts
+/reviews/
+/private-drafts/
+/tmp/
+/scratch/
+# Reconstructible tensor/data payloads; curated CSV/JSON/PNG/SVG results stay visible
+*.pt
+*.pth
+*.npz
+*.npy
+*.log
+*.zip
+.uv-cache/
+.matplotlib/

@@ -1,0 +1,12 @@
+{
+  "count": 10,
+  "dispersion": "individual feature-seed lines and arithmetic mean; exact sample SD is retained in aggregate.csv",
+  "matplotlib": "3.11.2",
+  "mse_axes": "positive logarithmic ranges; no mean-minus-SD ribbon or suppressed extreme seed",
+  "numpy": "2.5.3",
+  "origin": "redrawn from the public saved-measurement tables, without fitting or evaluation",
+  "pandas": "3.0.6",
+  "presentation_script_sha256": "3e263ea7da800e3eb07c01630241320f7854f415bace437e50ebc1d7934d5cad",
+  "signed_axes": "paired differences use symmetric log; cutoff differences retain exact zeros",
+  "uncertainty_scope": "conditional on one fixed dataset/noise realization; not a confidence interval"
+}

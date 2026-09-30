@@ -1,0 +1,14 @@
+torch==2.14.0
+filelock==4.0.4
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+tensorboard
+psutil
+jupyterlab
+ipykernel
+ipywidgets
+pytest
+ruff==0.16.8

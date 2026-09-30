@@ -1,0 +1,96 @@
+{
+  "status": "passed_local_publication_preparation",
+  "date": "2026-09-28T11:08:44+05:30",
+  "scope": "Local publication preparation, separately validated from the historical experiment.",
+  "runtime": {
+    "python": "3.13.11",
+    "platform": "Darwin",
+    "architecture": "arm64"
+  },
+  "current_regression_tests": {
+    "passed": 79,
+    "failed": 0,
+    "seconds": 25.03,
+    "command": "python -m pytest -q tests",
+    "scope": "Tiny correctness and recovery fixtures; no registered experiment rerun."
+  },
+  "historical_experiment_tests": {
+    "passed": 61,
+    "seconds": 6.95,
+    "receipt": "../results/run_001/provenance/runtime_checks.json"
+  },
+  "preservation": {
+    "protected_files": 3866,
+    "changed_files": 0,
+    "notebook": "notebooks/random_feature_double_descent.ipynb",
+    "notebook_sha256": "a52dd7b124873caa2c69ff546d63da6819005fe5e1c8e4d7b84d316799bac608",
+    "byte_for_byte_unchanged": true,
+    "code_cells": 36,
+    "executed_code_cells": 36,
+    "output_bearing_code_cells": 21,
+    "nbformat_validation": "passed"
+  },
+  "dependencies": {
+    "unique_packages": 125,
+    "conditional_pins": 126,
+    "all_pins_hashed": true,
+    "platform_marker_checks": [
+      {
+        "platform": "darwin",
+        "architecture": "arm64",
+        "active_pins": 123,
+        "torch": "==2.14.0"
+      },
+      {
+        "platform": "linux",
+        "architecture": "x86_64",
+        "active_pins": 122,
+        "torch": "==2.14.0+cpu"
+      },
+      {
+        "platform": "win32",
+        "architecture": "AMD64",
+        "active_pins": 122,
+        "torch": "==2.14.0+cpu"
+      }
+    ],
+    "installed_metadata": "123 packages compatible",
+    "sync_dry_run": "123 active packages; would make no changes",
+    "existing_environment_modified": false
+  },
+  "public_evidence": {
+    "path": "results/run_001",
+    "hashed_artifacts": 64,
+    "total_bytes": 5564342,
+    "figure_pairs": 8,
+    "manifest_verification": "passed",
+    "redraw": "Verified from bundled measurements; no new fitting or test evaluation."
+  },
+  "checks": {
+    "ruff_lint": "passed",
+    "ruff_format": "24 files already formatted",
+    "static_repository": {
+      "status": "passed",
+      "python_files": 23,
+      "notebook_code_cells": 36,
+      "retained_output_cells": 21,
+      "hashed_dependency_pins": 126,
+      "local_links": 86,
+      "verified_result_files": 64
+    },
+    "pytest_discovery": {
+      "status": "passed",
+      "collected": 79,
+      "historical_tests_collected": false,
+      "configuration": "pytest.ini limits default discovery to current tests/"
+    }
+  },
+  "boundaries": {
+    "git_commands_used": false,
+    "notebook_executed": false,
+    "registered_experiment_rerun": false,
+    "remote_publication": false,
+    "hosted_ci_observed": false,
+    "windows_linux_runtime_tested": false
+  }
+}

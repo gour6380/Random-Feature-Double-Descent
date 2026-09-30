@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this implementation, cite the repository revision and its research foundations."
+title: "Random-Feature Double Descent"
+type: software
+authors:
+  - family-names: Karwasara
+    given-names: Gourav
+license: MIT
+abstract: "A notebook-driven PyTorch CPU float64 study of random-feature regression, interpolation, noise and ridge regularization."

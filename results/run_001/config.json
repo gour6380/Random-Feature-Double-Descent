@@ -1,0 +1,81 @@
+{
+  "data": {
+    "input_dim": 8,
+    "input_seeds": [
+      31001,
+      31002,
+      31003
+    ],
+    "noise_seeds": [
+      32001,
+      32002,
+      32003
+    ],
+    "noise_stds": [
+      0.0,
+      0.3
+    ],
+    "test_size": 32768,
+    "train_size": 1024,
+    "validation_size": 4096
+  },
+  "execution": {
+    "budget_seconds": 1800.0,
+    "eval_batch_size": 1024,
+    "preflight_widths": [
+      256,
+      1024,
+      8192
+    ],
+    "threads": 4
+  },
+  "features": {
+    "counts": [
+      64,
+      128,
+      256,
+      384,
+      512,
+      768,
+      896,
+      960,
+      992,
+      1023,
+      1024,
+      1025,
+      1056,
+      1088,
+      1152,
+      1280,
+      1536,
+      2048,
+      3072,
+      4096,
+      8192
+    ],
+    "lengthscale": 2.8284271247461903,
+    "phase_seed_offset": 10000,
+    "seeds": [
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035
+    ]
+  },
+  "protocol_version": "1.1",
+  "solver": {
+    "interpolation_tolerance": 1e-08,
+    "rcond": 1e-12,
+    "ridge_lambda": 0.0001,
+    "sensitivity_rconds": [
+      1e-10,
+      1e-14
+    ]
+  }
+}

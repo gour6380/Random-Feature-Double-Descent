@@ -1,0 +1,74 @@
+[
+  {
+    "count": 32768,
+    "noise_std": 0.0,
+    "observed_mse": 0.9871252451997441,
+    "observed_sse": 32346.120034705214,
+    "predictor": "training_mean",
+    "reference_scope": "population_expectation; finite-sample measurements are separate",
+    "signal_mse": 0.9871252451997441,
+    "signal_sse": 32346.120034705214,
+    "theoretical_observed_mse": null,
+    "theoretical_signal_mse": null
+  },
+  {
+    "count": 32768,
+    "noise_std": 0.0,
+    "observed_mse": 0.9871339107649473,
+    "observed_sse": 32346.403987945792,
+    "predictor": "zero",
+    "reference_scope": "population_expectation; finite-sample measurements are separate",
+    "signal_mse": 0.9871339107649473,
+    "signal_sse": 32346.403987945792,
+    "theoretical_observed_mse": 1.0,
+    "theoretical_signal_mse": 1.0
+  },
+  {
+    "count": 32768,
+    "noise_std": 0.0,
+    "observed_mse": 0.0,
+    "observed_sse": 0.0,
+    "predictor": "teacher",
+    "reference_scope": "population_expectation; finite-sample measurements are separate",
+    "signal_mse": 0.0,
+    "signal_sse": 0.0,
+    "theoretical_observed_mse": 0.0,
+    "theoretical_signal_mse": 0.0
+  },
+  {
+    "count": 32768,
+    "noise_std": 0.3,
+    "observed_mse": 1.0784238040167842,
+    "observed_sse": 35337.791210021984,
+    "predictor": "training_mean",
+    "reference_scope": "population_expectation; finite-sample measurements are separate",
+    "signal_mse": 0.9871207258825905,
+    "signal_sse": 32345.971945720725,
+    "theoretical_observed_mse": null,
+    "theoretical_signal_mse": null
+  },
+  {
+    "count": 32768,
+    "noise_std": 0.3,
+    "observed_mse": 1.078444347974659,
+    "observed_sse": 35338.46439443363,
+    "predictor": "zero",
+    "reference_scope": "population_expectation; finite-sample measurements are separate",
+    "signal_mse": 0.9871339107649473,
+    "signal_sse": 32346.403987945792,
+    "theoretical_observed_mse": 1.09,
+    "theoretical_signal_mse": 1.0
+  },
+  {
+    "count": 32768,
+    "noise_std": 0.3,
+    "observed_mse": 0.0914981007047533,
+    "observed_sse": 2998.209763893356,
+    "predictor": "teacher",
+    "reference_scope": "population_expectation; finite-sample measurements are separate",
+    "signal_mse": 0.0,
+    "signal_sse": 0.0,
+    "theoretical_observed_mse": 0.09,
+    "theoretical_signal_mse": 0.0
+  }
+]
